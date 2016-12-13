@@ -121,12 +121,14 @@ message Experiment {
   string name = 1;
   bytes segments = 2;
   repeated Param params = 3;
+  string id = 4;
 }
 
 // Param structure
 message Param {
   string name = 1;
   Value value = 2;
+  string id = 4;
 }
 
 // Value structure
