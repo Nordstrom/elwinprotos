@@ -16,6 +16,7 @@ message Experiments {
 }
 
 message Experiment {
+	string namespace = 1;
 	repeated Param params = 2;
 }
 
