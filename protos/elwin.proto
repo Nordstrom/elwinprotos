@@ -1,9 +1,16 @@
 syntax = "proto3";
 
+import "google/api/annotations.proto";
+
 package elwin;
 
 service Elwin {
-	rpc GetNamespaces(Identifier) returns (Experiments) {}
+	rpc GetNamespaces(Identifier) returns (Experiments) {
+		option(google.api.http) = {
+			post: "/api/v1/get-namespaces"
+			body: "*"
+		};
+	}
 }
 
 message Identifier {

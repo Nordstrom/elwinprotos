@@ -14,7 +14,34 @@
   "produces": [
     "application/json"
   ],
-  "paths": {},
+  "paths": {
+    "/api/v1/get-namespaces": {
+      "post": {
+        "operationId": "GetNamespaces",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/elwinExperiments"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/elwinIdentifier"
+            }
+          }
+        ],
+        "tags": [
+          "Elwin"
+        ]
+      }
+    }
+  },
   "definitions": {
     "elwinExperiment": {
       "type": "object",
