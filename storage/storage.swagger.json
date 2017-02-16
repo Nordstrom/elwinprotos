@@ -245,6 +245,17 @@
         "id": {
           "type": "string",
           "format": "string"
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "string"
+          }
+        },
+        "detailName": {
+          "type": "string",
+          "format": "string"
         }
       },
       "title": "Experiment structure"
@@ -255,13 +266,6 @@
         "name": {
           "type": "string",
           "format": "string"
-        },
-        "labels": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "string"
-          }
         },
         "experiments": {
           "type": "array",

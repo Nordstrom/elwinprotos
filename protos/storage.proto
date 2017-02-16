@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
 
 // The ElwinStorage service definition
 service ElwinStorage {
@@ -45,6 +46,29 @@ service ElwinStorage {
       body: "*"
     };
   }
+}
+
+// ExperimentIntakeRequest creates an experiment in the database and sends a notification for reviewers
+message ExperimentIntakeRequest {
+  ExperimentMetadata metadata = 1;
+  Namespace namespace = 2;
+}
+
+// ExperimentMetadata all the junk that elwin doesn't care about
+message ExperimentMetadata {
+  string userID = 1;
+  string programManagerID = 2;
+  string productManagerID = 3;
+  string hypothesis = 4;
+  string kpi = 5;
+  bool timeBound = 6;
+  google.protobuf.Timestamp plannedStartTime = 7;
+  google.protobuf.Timestamp plannedEndTime = 8;
+  google.protobuf.Timestamp actualStartTime = 9;
+  google.protobuf.Timestamp actualEndTime = 10;
+  string actionPlanNegative = 11;
+  string actionPlanNeutral = 12;
+  string experimentType = 13;
 }
 
 // AllRequest retuns all the experiments from the given environment.
@@ -112,7 +136,6 @@ enum Environment {
 // Namespace structure
 message Namespace {
   string name = 1;
-  repeated string labels = 2;
   repeated Experiment experiments = 3;
 }
 
@@ -122,6 +145,8 @@ message Experiment {
   bytes segments = 2;
   repeated Param params = 3;
   string id = 4;
+  map<string, string> labels = 5;
+  string detailName = 6;
 }
 
 // Param structure
