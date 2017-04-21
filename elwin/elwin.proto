@@ -12,6 +12,11 @@ service Elwin {
 			get: "/elwin/v1/experiments"
 		};
 	}
+	rpc By(ByRequest) returns (ByReply) {
+		option(google.api.http) = {
+			get: "/elwin/v1/experiments-by"
+		};
+	}
 }
 
 message GetRequest {
@@ -21,6 +26,16 @@ message GetRequest {
 
 message GetReply {
 	repeated Experiment experiments = 1;
+}
+
+message ByRequest {
+	string userID = 1;
+	string query = 2;
+	string by = 3;
+}
+
+message ByReply {
+	map<string, Experiment> group = 1;
 }
 
 message Experiment {
