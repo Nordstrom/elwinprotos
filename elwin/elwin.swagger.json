@@ -22,60 +22,10 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/apiExperimentList"
+              "$ref": "#/definitions/apiGetReply"
             }
           }
         },
-        "parameters": [
-          {
-            "name": "userID",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "query",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "Elwin"
-        ]
-      }
-    },
-    "/elwin/v1/experiments-by": {
-      "get": {
-        "operationId": "By",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/apiByReply"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "userID",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "query",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "by",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
         "tags": [
           "Elwin"
         ]
@@ -83,39 +33,16 @@
     }
   },
   "definitions": {
-    "apiByReply": {
-      "type": "object",
-      "properties": {
-        "group": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/apiExperimentList"
-          }
-        }
-      }
-    },
-    "apiByRequest": {
-      "type": "object",
-      "properties": {
-        "userID": {
-          "type": "string"
-        },
-        "query": {
-          "type": "string"
-        },
-        "by": {
-          "type": "string"
-        }
-      }
-    },
     "apiExperiment": {
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "format": "string"
         },
         "namespace": {
-          "type": "string"
+          "type": "string",
+          "format": "string"
         },
         "params": {
           "type": "array",
@@ -126,7 +53,8 @@
         "labels": {
           "type": "object",
           "additionalProperties": {
-            "type": "string"
+            "type": "string",
+            "format": "string"
           }
         }
       }
@@ -142,14 +70,37 @@
         }
       }
     },
+    "apiGetReply": {
+      "type": "object",
+      "properties": {
+        "experiments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiExperiment"
+          }
+        },
+        "group": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/apiExperimentList"
+          }
+        }
+      }
+    },
     "apiGetRequest": {
       "type": "object",
       "properties": {
         "userID": {
-          "type": "string"
+          "type": "string",
+          "format": "string"
         },
         "query": {
-          "type": "string"
+          "type": "string",
+          "format": "string"
+        },
+        "by": {
+          "type": "string",
+          "format": "string"
         }
       }
     },
@@ -157,10 +108,12 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "format": "string"
         },
         "value": {
-          "type": "string"
+          "type": "string",
+          "format": "string"
         }
       }
     }
