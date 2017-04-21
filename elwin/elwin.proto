@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 option go_package = "github.com/foolusion/elwinprotos/elwin";
 
 service Elwin {
-	rpc Get(GetRequest) returns (GetReply) {
+	rpc Get(GetRequest) returns (ExperimentList) {
 		option(google.api.http) = {
 			get: "/elwin/v1/experiments"
 		};
@@ -24,9 +24,6 @@ message GetRequest {
 	string query = 2;
 }
 
-message GetReply {
-	repeated Experiment experiments = 1;
-}
 
 message ByRequest {
 	string userID = 1;
@@ -35,7 +32,11 @@ message ByRequest {
 }
 
 message ByReply {
-	map<string, Experiment> group = 1;
+	map<string, ExperimentList> group = 1;
+}
+
+message ExperimentList {
+	repeated Experiment experiments = 1;
 }
 
 message Experiment {

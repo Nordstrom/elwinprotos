@@ -22,10 +22,24 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/apiGetReply"
+              "$ref": "#/definitions/apiExperimentList"
             }
           }
         },
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "tags": [
           "Elwin"
         ]
@@ -42,6 +56,26 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "tags": [
           "Elwin"
         ]
@@ -55,7 +89,7 @@
         "group": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/apiExperiment"
+            "$ref": "#/definitions/apiExperimentList"
           }
         }
       }
@@ -64,16 +98,13 @@
       "type": "object",
       "properties": {
         "userID": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "query": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "by": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         }
       }
     },
@@ -81,12 +112,10 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "namespace": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "params": {
           "type": "array",
@@ -96,7 +125,7 @@
         }
       }
     },
-    "apiGetReply": {
+    "apiExperimentList": {
       "type": "object",
       "properties": {
         "experiments": {
@@ -111,12 +140,10 @@
       "type": "object",
       "properties": {
         "userID": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "query": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         }
       }
     },
@@ -124,12 +151,10 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "value": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         }
       }
     }
