@@ -43,6 +43,7 @@ message Experiment {
 	string name = 1;
 	string namespace = 2;
 	repeated Param params = 3;
+	map<string, string> labels = 4;
 }
 
 message Param {
