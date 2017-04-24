@@ -100,7 +100,7 @@
         "userID": {
           "type": "string"
         },
-        "requirement": {
+        "requirements": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/apiRequirement"

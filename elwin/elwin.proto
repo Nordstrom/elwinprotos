@@ -17,7 +17,7 @@ service Elwin {
 
 message GetRequest {
 	string userID = 1;
-	repeated Requirement requirement = 2;
+	repeated Requirement requirements = 2;
 	string by = 3;
 }
 
