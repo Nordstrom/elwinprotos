@@ -18,7 +18,6 @@ package intake
 import proto "github.com/gogo/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import _ "github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api"
 import elwin_storage "github.com/foolusion/elwinprotos/storage"
 
 import strings "strings"
