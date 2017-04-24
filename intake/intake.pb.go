@@ -18,6 +18,7 @@ package intake
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
+import _ "google.golang.org/genproto/googleapis/api/annotations"
 import elwin_storage "github.com/foolusion/elwinprotos/storage"
 
 import (
