@@ -36,7 +36,8 @@ message GetReply {
 }
 
 message EvalRequest {
-	repeated storage.Experiment experiments = 1;
+	string userID = 1;
+	repeated storage.Experiment experiments = 2;
 }
 
 message EvalReply {

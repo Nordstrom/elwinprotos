@@ -83,6 +83,9 @@
     "apiEvalRequest": {
       "type": "object",
       "properties": {
+        "userID": {
+          "type": "string"
+        },
         "experiments": {
           "type": "array",
           "items": {
