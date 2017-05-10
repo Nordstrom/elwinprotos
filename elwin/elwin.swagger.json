@@ -16,7 +16,7 @@
   ],
   "paths": {
     "/elwin/v1/experiments": {
-      "get": {
+      "post": {
         "operationId": "Get",
         "responses": {
           "200": {
@@ -28,18 +28,11 @@
         },
         "parameters": [
           {
-            "name": "userID",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "labels",
-            "in": "query",
-            "required": false,
-            "type": "array",
-            "items": {
-              "type": "string"
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiGetRequest"
             }
           }
         ],
@@ -73,7 +66,7 @@
         }
       }
     },
-    "apiGetReply": {
+    "apiExperimentList": {
       "type": "object",
       "properties": {
         "experiments": {
@@ -84,19 +77,50 @@
         }
       }
     },
+    "apiGetReply": {
+      "type": "object",
+      "properties": {
+        "experiments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiExperiment"
+          }
+        },
+        "group": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/apiExperimentList"
+          }
+        }
+      }
+    },
     "apiGetRequest": {
       "type": "object",
       "properties": {
         "userID": {
           "type": "string"
         },
-        "labels": {
+        "requirements": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/apiRequirement"
           }
+        },
+        "by": {
+          "type": "string"
         }
       }
+    },
+    "apiOperation": {
+      "type": "string",
+      "enum": [
+        "EXISTS",
+        "EQUAL",
+        "NOT_EQUAL",
+        "IN",
+        "NOT_IN"
+      ],
+      "default": "EXISTS"
     },
     "apiParam": {
       "type": "object",
@@ -106,6 +130,23 @@
         },
         "value": {
           "type": "string"
+        }
+      }
+    },
+    "apiRequirement": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "op": {
+          "$ref": "#/definitions/apiOperation"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     }
