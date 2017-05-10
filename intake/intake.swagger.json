@@ -15,32 +15,6 @@
     "application/json"
   ],
   "paths": {
-    "/api/v1/experiment-change-state": {
-      "post": {
-        "operationId": "ExperimentChangeState",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/intakeExperimentChangeStateReply"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/intakeExperimentChangeStateRequest"
-            }
-          }
-        ],
-        "tags": [
-          "ExperimentIntake"
-        ]
-      }
-    },
     "/api/v1/experiment-intake": {
       "post": {
         "summary": "ExperimentIntake takes a request from a web form and creates the\nexperiment in the data store.",
@@ -70,31 +44,6 @@
     }
   },
   "definitions": {
-    "intakeExperimentChangeStateReply": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "state": {
-          "$ref": "#/definitions/intakeState"
-        }
-      }
-    },
-    "intakeExperimentChangeStateRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "date": {
-          "type": "string"
-        },
-        "state": {
-          "$ref": "#/definitions/intakeState"
-        }
-      }
-    },
     "intakeExperimentIntakeReply": {
       "type": "object"
     },
@@ -155,15 +104,6 @@
         }
       },
       "title": "ExperimentMetadata all the junk that elwin doesn't care about"
-    },
-    "intakeState": {
-      "type": "string",
-      "enum": [
-        "ERR",
-        "START",
-        "END"
-      ],
-      "default": "ERR"
     },
     "storageExperiment": {
       "type": "object",
